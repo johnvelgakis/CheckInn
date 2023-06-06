@@ -3,6 +3,7 @@ import customtkinter
 from PIL import ImageTk, Image
 
 from Home import Home
+from SignUp import SignUp
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
@@ -22,7 +23,7 @@ class Login:
         self.entry2.pack(pady=12, padx=10)
         self.login_button = customtkinter.CTkButton(master=self.frame, text="Login", command=self.login)
         self.login_button.pack(pady=12, padx=10)
-        self.signup_button = customtkinter.CTkButton(master=self.frame, text="Sign Up")
+        self.signup_button = customtkinter.CTkButton(master=self.frame, text="Sign Up", command=self.signup)
         self.signup_button.pack(pady=12, padx=10)
         self.exit = customtkinter.CTkButton(master=self.frame, text="Exit", command=self.exit)
         self.exit.pack(pady=12, padx=10)
@@ -45,6 +46,10 @@ class Login:
 
     def start(self):
         self.root.mainloop()
+
+    def signup(self):
+        SignUp()
+            
 
 login_system = Login()
 login_system.start()
