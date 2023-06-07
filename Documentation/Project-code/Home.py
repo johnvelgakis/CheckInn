@@ -1,6 +1,7 @@
 import customtkinter
 from CheckIn import CheckIn
 from CheckOut import CheckOut
+from Requests import Requests
 
 
 customtkinter.set_appearance_mode("dark")
@@ -22,7 +23,7 @@ class Home:
         button3 = customtkinter.CTkButton(master=self.frame, text="Housekeeping")
         button3.pack(pady=12, padx=10)
 
-        button4 = customtkinter.CTkButton(master=self.frame, text="Requests")
+        button4 = customtkinter.CTkButton(master=self.frame, text="Requests", command=self.go_to_requests)
         button4.pack(pady=12, padx=10)
 
         button5 = customtkinter.CTkButton(master=self.frame, text="Logout", command= self.Logout)
@@ -36,6 +37,11 @@ class Home:
 
     def go_to_check_out(self):
         check_in_window = CheckOut()
+        self.root.destroy()
+        check_in_window.root.mainloop()
+
+    def go_to_requests(self):
+        check_in_window = Requests()
         self.root.destroy()
         check_in_window.root.mainloop()
 
