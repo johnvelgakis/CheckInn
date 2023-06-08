@@ -52,8 +52,7 @@ class MakeReservation:
         self.make_reservation_button = customtkinter.CTkButton(master=self.frame, text="Make Reservation", command=self.save_to_db)
         self.make_reservation_button.pack(pady=12, padx=10) 
 
-        self.back_button = customtkinter.CTkButton(master=self.frame, text="Back", command=self.to_home) 
-        self.back_button.pack(pady=12, padx=10) 
+        
 
     def select_dates(self):
         def get_selected_dates():
@@ -90,8 +89,4 @@ class MakeReservation:
 
         customtkinter.CTkMessageBox.showinfo("Reservation Successful", "Your reservation has been successfully made.")
 
-    def to_home(self):
-        self.root.destroy()
-        from Home import Home
-        home_window = Home()
-        home_window.root.mainloop()
+   

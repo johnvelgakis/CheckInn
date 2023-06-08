@@ -37,47 +37,47 @@ class Home:
         button6 = customtkinter.CTkButton(master=self.frame, text="Active Reservations", command=self.go_to_print_check_ins)
         button6.pack(pady=12, padx=10)
 
-        button7 = customtkinter.CTkButton(master=self.frame, text="Logout", command= self.Logout)
+        button7 = customtkinter.CTkButton(master=self.frame, text="Make Reservation", command=self.go_to_Make_Reservation)
         button7.pack(pady=12, padx=10)
 
-        button8 = customtkinter.CTkButton(master=self.frame, text="Make Reservation", command=self.go_to_Make_Reservation)
+        button8 = customtkinter.CTkButton(master=self.frame, text="Logout", command= self.Logout)
         button8.pack(pady=12, padx=10)
 
+      
 
     def go_to_check_in(self):
         self.root.destroy()
-        check_in_window = CheckIn()
-        check_in_window.root.mainloop()
+        window = CheckIn()
+        window.root.mainloop()
 
     def go_to_check_out(self):
-        check_in_window = CheckOut()
+        window = CheckOut()
         self.root.destroy()
-        check_in_window.root.mainloop()
+        window.root.mainloop()
 
     def go_to_housekeeping(self):
-        check_in_window = Housekeeping()
+        window = Housekeeping()
         self.root.destroy()
-        check_in_window.root.mainloop()
+        window.root.mainloop()
 
     def go_to_requests(self):
-        check_in_window = Requests()
+        window = Requests()
         self.root.destroy()
-        check_in_window.root.mainloop()
+        window.root.mainloop()
 
     def go_to_reservations(self):
-        check_in_window = Reservations()
+        window = Reservations()
         self.root.destroy()
-        check_in_window.root.mainloop()
+        window.root.mainloop()
 
     def go_to_print_check_ins(self):
         self.root.destroy()
-        check_in_window = PrintCheckIns()
-        check_in_window.root.mainloop()
+        window = PrintCheckIns()
+        window.root.mainloop()
 
     def go_to_Make_Reservation(self):
-        self.root.destroy()
-        check_in_window = MakeReservation()
-        check_in_window.root.mainloop()
+        window = MakeReservation()
+        window.root.mainloop()
 
     def Logout(self):
         self.root.destroy()

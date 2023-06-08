@@ -27,17 +27,15 @@ class Login:
         self.login_button.pack(pady=12, padx=10)
         self.signup_button = customtkinter.CTkButton(master=self.frame, text="Sign Up", command=self.signup)
         self.signup_button.pack(pady=12, padx=10)
+       
+        self.Guest = customtkinter.CTkButton(master=self.frame, text="Guest", command=self.go_to_guest_menu)
+        self.Guest.pack(pady=12, padx=10)
+       
         self.exit = customtkinter.CTkButton(master=self.frame, text="Exit", command=self.exit)
         self.exit.pack(pady=12, padx=10)
-##DB
-
-     # Connect to the database
-        conn = sqlite3.connect('database.db')
-        cursor = conn.cursor()
-
-    # Close the database connection
-        cursor.close()
-        conn.close()
+        
+        
+     
 
 
     ##Log-In
@@ -47,11 +45,13 @@ class Login:
         if username == "admin" and password == "password":
             self.root.destroy()
             Home()   ##Opens Home Screen
-
+        
         else:
-            customtkinter.CTkMessageDialog(master=self.root, message="Invalid username or password", icon="error")
+            # Incorrect username or password
+            customtkinter.CTkMessageBox.showinfo("Login Failed", "Wrong username or password.")
 
-    
+
+
 
     #exit (close window)
     def exit(self):
@@ -65,3 +65,8 @@ class Login:
         SignUp()
             
 
+    def go_to_guest_menu(self):
+        self.root.destroy()
+        from GuestMenu import GuestMenu  ##import here to avoid circular import error
+        window = GuestMenu()
+        window.root.mainloop()
