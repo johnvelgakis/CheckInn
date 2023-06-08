@@ -64,8 +64,8 @@ class Home:
         check_in_window.root.mainloop()
 
     def go_to_print_check_ins(self):
-        check_in_window = PrintCheckIns()
         self.root.destroy()
+        check_in_window = PrintCheckIns()
         check_in_window.root.mainloop()
 
     def Logout(self):
