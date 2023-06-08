@@ -1,34 +1,24 @@
-import sqlite3
 import customtkinter
+from tkinter import ttk
+import sqlite3
 import tkinter as tk
+
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
 
 class PrintCheckIns:
     def __init__(self):
-        # Connect to the database
-        conn = sqlite3.connect('database.db')
-        cursor = conn.cursor()
+        self.root = customtkinter.CTk()
+        self.root.geometry("1200x900")
+        self.frame = customtkinter.CTkFrame(master=self.root)
+        self.frame.pack(pady=0, padx=0, fill="both", expand=True)
 
-        # Retrieve data from the checkins table
-        cursor.execute("SELECT * FROM checkins")
-        rows = cursor.fetchall()
+        self.name_label = customtkinter.CTkLabel(master=self.frame, text="Ongoing Reservations")
+        self.name_label.pack(pady=12, padx=10)
 
-        # Close the database connection
-        cursor.close()
-        conn.close()
-
-        self.root = tk.Tk()
-
-        ##view the table check ins
-       
-        
-        from tkinter import ttk
-
-        # Assuming this code is within a class or a method
         # Create a Treeview widget
-        self.treeview = ttk.Treeview(self.root)
+        self.treeview = ttk.Treeview(self.frame)
 
         # Define the column titles as a separate list
         column_titles = ['Name', 'Surname', 'Age', 'Room', 'Arrival Date', 'Departure Date']
@@ -42,11 +32,12 @@ class PrintCheckIns:
             self.treeview.column(col, anchor=tk.CENTER)
 
         # Insert each row into the Treeview
+        rows = self.fetch_rows_from_database()
         for row in rows:
             self.treeview.insert('', tk.END, values=row)
 
         # Create a vertical scrollbar for the Treeview
-        vsb = ttk.Scrollbar(self.root, orient='vertical', command=self.treeview.yview)
+        vsb = ttk.Scrollbar(self.frame, orient='vertical', command=self.treeview.yview)
         self.treeview.configure(yscroll=vsb.set)
         vsb.pack(side='right', fill='y')
 
@@ -60,7 +51,19 @@ class PrintCheckIns:
         self.back_button.pack(pady=12, padx=10)
 
         self.root.mainloop()
-        
+
+    def fetch_rows_from_database(self):
+        # Establish a connection to the database
+        connection = sqlite3.connect('database.db')
+        cursor = connection.cursor()
+
+        # Fetch all rows from the checkins table
+        cursor.execute("SELECT * FROM checkins")
+        rows = cursor.fetchall()
+
+        connection.close()
+
+        return rows   
 
     def to_home(self):
         self.root.destroy()
