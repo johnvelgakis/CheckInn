@@ -8,8 +8,9 @@ from DB import DB
 #---- username: admin -------
 #---- password: password ----
 
-
+#login
 login_system = Login()
 login_system.start()
 
+#database
 DB_system = DB()
