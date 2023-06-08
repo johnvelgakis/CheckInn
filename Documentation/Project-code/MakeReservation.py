@@ -57,7 +57,7 @@ class MakeReservation:
     def select_dates(self):
         def get_selected_dates():
             selected_arrival_date = calendar.selection_get()
-            selected_departure_date = calendar.selection_get() + timedelta(days=1)
+            selected_departure_date = calendar.selection_get() 
             self.arrival_date_entry.set_date(selected_arrival_date)
             self.departure_date_entry.set_date(selected_departure_date)
             top.destroy()
