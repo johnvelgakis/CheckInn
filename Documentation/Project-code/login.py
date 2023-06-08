@@ -65,8 +65,3 @@ class Login:
         SignUp()
             
 
-login_system = Login()
-login_system.start()
-
-DB_system = DB()
-

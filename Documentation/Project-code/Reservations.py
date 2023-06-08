@@ -9,12 +9,12 @@ class Reservations:
         self.root.geometry("1200x900")
         self.frame = customtkinter.CTkFrame(master=self.root)
         self.frame.pack(pady=0, padx=0, fill="both", expand=True)
-    
+         
 
         self.name_label = customtkinter.CTkLabel(master=self.frame, text="Reservations")
         self.name_label.pack(pady=12, padx=10)
 
-
+    
 
 
     ##button that takes the user back to home window

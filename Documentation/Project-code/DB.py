@@ -27,6 +27,15 @@ class DB:
             )
         """)
 
+          # Create check_ins
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS requests(
+                room TEXT,
+                request TEXT,
+                
+            )
+        """)
+
         # Insert data into the table
         cursor.execute("""
             INSERT INTO users VALUES ('admin', 'password', 'empl')

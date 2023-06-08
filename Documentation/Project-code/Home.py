@@ -1,4 +1,6 @@
+import os
 import customtkinter
+from PIL import ImageTk, Image
 from CheckIn import CheckIn
 from CheckOut import CheckOut
 from Requests import Requests
@@ -31,7 +33,7 @@ class Home:
         button5 = customtkinter.CTkButton(master=self.frame, text="Reservations", command=self.go_to_reservations)
         button5.pack(pady=12, padx=10)
 
-        button6 = customtkinter.CTkButton(master=self.frame, text="Print Check Ins", command=self.go_to_print_check_ins)
+        button6 = customtkinter.CTkButton(master=self.frame, text="Active Reservations", command=self.go_to_print_check_ins)
         button6.pack(pady=12, padx=10)
 
         button7 = customtkinter.CTkButton(master=self.frame, text="Logout", command= self.Logout)
