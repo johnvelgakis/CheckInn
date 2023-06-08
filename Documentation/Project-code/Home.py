@@ -7,6 +7,7 @@ from Requests import Requests
 from Reservations import Reservations
 from Housekeeping import Housekeeping
 from PrintCheckIns import  PrintCheckIns
+from MakeReservation import MakeReservation
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
@@ -39,6 +40,9 @@ class Home:
         button7 = customtkinter.CTkButton(master=self.frame, text="Logout", command= self.Logout)
         button7.pack(pady=12, padx=10)
 
+        button8 = customtkinter.CTkButton(master=self.frame, text="Make Reservation", command=self.go_to_Make_Reservation)
+        button8.pack(pady=12, padx=10)
+
 
     def go_to_check_in(self):
         self.root.destroy()
@@ -68,6 +72,11 @@ class Home:
     def go_to_print_check_ins(self):
         self.root.destroy()
         check_in_window = PrintCheckIns()
+        check_in_window.root.mainloop()
+
+    def go_to_Make_Reservation(self):
+        self.root.destroy()
+        check_in_window = MakeReservation()
         check_in_window.root.mainloop()
 
     def Logout(self):

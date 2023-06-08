@@ -27,14 +27,16 @@ class DB:
             )
         """)
 
-          # Create check_ins
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS requests(
-                room TEXT,
-                request TEXT,
-                
-            )
-        """)
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS reservations (
+        name TEXT,
+        surname TEXT,
+        age INTEGER,
+        num_people INTEGER,
+        arrival_date TEXT,
+        departure_date TEXT
+    )
+''')
 
         # Insert data into the table
         cursor.execute("""
