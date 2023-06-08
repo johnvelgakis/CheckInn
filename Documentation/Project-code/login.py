@@ -1,9 +1,11 @@
 import customtkinter
+import sqlite3
 
 from PIL import ImageTk, Image
 
 from Home import Home
 from SignUp import SignUp
+from DB import DB
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
@@ -27,8 +29,18 @@ class Login:
         self.signup_button.pack(pady=12, padx=10)
         self.exit = customtkinter.CTkButton(master=self.frame, text="Exit", command=self.exit)
         self.exit.pack(pady=12, padx=10)
+##DB
 
-##Log-In
+     # Connect to the database
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+
+    # Close the database connection
+        cursor.close()
+        conn.close()
+
+
+    ##Log-In
     def login(self):
         username = self.entry1.get()
         password = self.entry2.get()
@@ -38,6 +50,8 @@ class Login:
 
         else:
             customtkinter.CTkMessageDialog(master=self.root, message="Invalid username or password", icon="error")
+
+    
 
     #exit (close window)
     def exit(self):
@@ -53,3 +67,6 @@ class Login:
 
 login_system = Login()
 login_system.start()
+
+DB_system = DB()
+DB_system.start()
