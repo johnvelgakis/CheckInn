@@ -1,4 +1,5 @@
 import customtkinter
+import sqlite3
 from datetime import datetime, timedelta
 
 customtkinter.set_appearance_mode("dark")
@@ -47,36 +48,36 @@ class CheckIn:
         self.departure_date_entry = customtkinter.CTkEntry(master=self.frame, placeholder_text="Enter departure date")
         self.departure_date_entry.pack(pady=12, padx=10)
 
-        self.check_in_button = customtkinter.CTkButton(master=self.frame, text="Check In", command=self.check_in)
+        self.check_in_button = customtkinter.CTkButton(master=self.frame, text="Check In", command=self.save_to_db)
         self.check_in_button.pack(pady=12, padx=10) 
 
         ##button that takes the user back to home window
         self.back_button = customtkinter.CTkButton(master=self.frame, text="Back", command=self.to_home) 
         self.back_button.pack(pady=12, padx=10) 
-    
 
-    
+     
+    def save_to_db(self):
+        ##connect to db
+        connection = sqlite3.connect('database.db')
+        cursor = connection.cursor()
+
+        # Retrieve the values from the entry widgets (replace `self.name_entry`, `self.surname_entry`, etc., with the respective entry widgets)
+        name = self.name_entry.get()
+        surname = self.surname_entry.get()
+        age = int(self.age_entry.get())  # Assuming age is entered as an integer
+        room = self.room_entry.get()
+        arrival_date = self.arrival_date_entry.get()  # Assuming the entry widget returns a valid datetime value
+        departure_date = self.departure_date_entry.get()  # Assuming the entry widget returns a valid datetime value
+
+        # Insert the values into the database
+        cursor.execute("INSERT INTO checkins (name, surname, age, room, arrival_date, departure_date) VALUES (?, ?, ?, ?, ?, ?)",
+                    (name, surname, age, room, arrival_date, departure_date))
+
+        connection.commit()
+        connection.close()
+
     def to_home(self):
         self.root.destroy()
         from Home import Home     ##import here to avoid circular import error
         home_window = Home()
         home_window.root.mainloop()
-          
-    
-
-    def check_in(self):
-        name = self.name_entry.get()
-        surname = self.surname_entry.get()
-        age = self.age_entry.get()
-        room = self.room_entry.get()
-        arrival_date_str = self.arrival_date_entry.get()
-        departure_date_str = self.departure_date_entry.get()
-       
-                # Convert arrival and departure dates to datetime objects
-        try:
-            arrival_date = datetime.strptime(arrival_date_str, "%d/%m/%Y")
-            departure_date = datetime.strptime(departure_date_str, "%d/%m/%Y")
-        except ValueError:
-            customtkinter.CTkMessageDialog(master=self.root, message="Invalid date format. Please enter again")
-
-   
