@@ -21,23 +21,39 @@ class PrintCheckIns:
 
         self.root = tk.Tk()
 
-        # Create a Listbox widget
-        self.listbox = tk.Listbox(self.root, width=60)
+        ##view the table check ins
+       
+        
+        from tkinter import ttk
 
-        # Insert each row into the Listbox
+        # Assuming this code is within a class or a method
+        # Create a Treeview widget
+        self.treeview = ttk.Treeview(self.root)
+
+        # Define the column titles as a separate list
+        column_titles = ['Name', 'Surname', 'Age', 'Room', 'Arrival Date', 'Departure Date']
+
+        # Configure the Treeview with columns
+        self.treeview['columns'] = column_titles
+
+        # Format column headers
+        for col in column_titles:
+            self.treeview.heading(col, text=col, anchor=tk.CENTER)
+            self.treeview.column(col, anchor=tk.CENTER)
+
+        # Insert each row into the Treeview
         for row in rows:
-            self.listbox.insert(tk.END, row)
+            self.treeview.insert('', tk.END, values=row)
 
-        # Create a scrollbar for the Listbox
-        scrollbar = tk.Scrollbar(self.root)
-        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        # Create a vertical scrollbar for the Treeview
+        vsb = ttk.Scrollbar(self.root, orient='vertical', command=self.treeview.yview)
+        self.treeview.configure(yscroll=vsb.set)
+        vsb.pack(side='right', fill='y')
 
-        # Configure the Listbox to use the scrollbar
-        self.listbox.config(yscrollcommand=scrollbar.set)
-        scrollbar.config(command=self.listbox.yview)
+        # Pack the Treeview
+        self.treeview.pack(pady=12, padx=10)
 
-        # Pack the Listbox
-        self.listbox.pack(pady=12, padx=10)
+
 
         # Create a button to go back to the home window
         self.back_button = customtkinter.CTkButton(master=self.root, text="Back", command=self.to_home)
