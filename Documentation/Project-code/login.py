@@ -1,4 +1,7 @@
+import os
+import tkinter as tk
 import customtkinter
+from PIL import ImageTk, Image
 import sqlite3
 
 from PIL import ImageTk, Image
@@ -12,13 +15,20 @@ customtkinter.set_default_color_theme("dark-blue")
 
 class Login:
     def __init__(self):
-        self.root = customtkinter.CTk()
-        self.root.geometry("600x400")
-        self.frame = customtkinter.CTkFrame(master=self.root)
-        self.frame.pack(
-            pady=0, padx=0, fill="both", expand=True)
-        self.label = customtkinter.CTkLabel(master=self.frame, text="Login System")
-        self.label.pack(pady=12, padx=10)
+        self.root = tk.Tk()
+        self.root.geometry("1300x731")
+        self.frame = tk.Frame(master=self.root)
+        self.frame.pack(pady=0, padx=0, fill="both", expand=True)
+
+
+        # Set up the background image
+        self.background_image = ImageTk.PhotoImage(Image.open("Documentation/Project-code/backround.png"))
+        self.background_label = tk.Label(self.root, image=self.background_image)
+        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+        
+        self.frame = tk.Frame(master=self.root)
+        self.frame.place(relx=0.5, rely=0.5, anchor="center")
+
         self.entry1 = customtkinter.CTkEntry(master=self.frame, placeholder_text="Username")
         self.entry1.pack(pady=12, padx=10)
         self.entry2 = customtkinter.CTkEntry(master=self.frame, placeholder_text="Password", show="*")
@@ -31,7 +41,7 @@ class Login:
         self.Guest = customtkinter.CTkButton(master=self.frame, text="Guest", command=self.go_to_guest_menu)
         self.Guest.pack(pady=12, padx=10)
        
-        self.exit = customtkinter.CTkButton(master=self.frame, text="Exit", command=self.exit)
+        self.exit = customtkinter.CTkButton(master=self.frame, text="Exit",fg_color=("black", "red") , command=self.exit)
         self.exit.pack(pady=12, padx=10)
         
         
