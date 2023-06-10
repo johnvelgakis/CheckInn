@@ -8,6 +8,9 @@ from DB import DB
 #---- username: admin -------
 #---- password: password ----
 
+#To login as guest (hotel client) press the green Guest button
+
+
 #login
 login_system = Login()
 login_system.start()
