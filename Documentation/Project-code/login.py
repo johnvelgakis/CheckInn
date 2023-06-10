@@ -38,14 +38,15 @@ class Login:
         self.signup_button = customtkinter.CTkButton(master=self.frame, text="Sign Up", command=self.signup)
         self.signup_button.pack(pady=12, padx=10)
        
-       # self.Guest = customtkinter.CTkButton(master=self.frame, text="Guest", command=self.go_to_guest_menu)
-        #self.Guest.pack(pady=12, padx=10)
-
+      
+        
         self.guest_button = customtkinter.CTkButton(master=self.root, text="Guest",fg_color=("black", "green"), command=self.go_to_guest_menu)
-        self.guest_button.place(x=400, y=400)
+        self.guest_button.place(x=580, y=530)
+
+        self.exit_button = customtkinter.CTkButton(master=self.root, text="Exit",fg_color=("black", "red"), command=self.exit)
+        self.exit_button.place(x=580, y=600)
        
-        self.exit = customtkinter.CTkButton(master=self.frame, text="Exit",fg_color=("black", "red") , command=self.exit)
-        self.exit.pack(pady=12, padx=10)
+        
         
         
      
