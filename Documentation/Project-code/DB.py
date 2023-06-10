@@ -46,6 +46,15 @@ class DB:
         room_number INTEGER PRIMARY KEY,
         condition TEXT CHECK(condition IN ('clean', 'dirty'))
     )
+''')     
+        #requests
+        cursor.execute('''
+    CREATE TABLE IF NOT EXISTS requests (
+        room_number INTEGER,
+        request TEXT,
+        description TEXT
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
 ''')
                        
         # Insert values into the rooms table

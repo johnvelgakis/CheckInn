@@ -90,3 +90,8 @@ class MakeReservation:
         customtkinter.CTkMessageBox.showinfo("Reservation Successful", "Your reservation has been successfully made.")
 
    
+    def to_guest_menu(self):
+        self.root.destroy()
+        from GuestMenu import GuestMenu     ##import here to avoid circular import error
+        home_window = GuestMenu()
+        home_window.root.mainloop()
