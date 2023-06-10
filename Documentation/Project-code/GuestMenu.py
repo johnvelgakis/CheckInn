@@ -4,6 +4,7 @@ import customtkinter
 from PIL import ImageTk, Image
 
 from MakeReservation import MakeReservation
+from MakeRequest import MakeRequest
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
@@ -29,12 +30,20 @@ class GuestMenu:
         button1 = customtkinter.CTkButton(master=self.frame, text="Make Reservation", command=self.go_to_Make_Reservation)
         button1.pack(pady=12, padx=10)
         
-        button2 = customtkinter.CTkButton(master=self.frame, fg_color=("black", "red") ,text="Logout", command= self.Logout)
+        button2 = customtkinter.CTkButton(master=self.frame, text="Make Request", command=self.go_to_Make_Request)
         button2.pack(pady=12, padx=10)
 
+        button3 = customtkinter.CTkButton(master=self.frame, fg_color=("black", "red") ,text="Logout", command= self.Logout)
+        button3.pack(pady=12, padx=10)
+
+       
+
+    def go_to_Make_Request(self):
+        self.root.destroy()
+        window = MakeRequest()
+        window.root.mainloop()
 
     def go_to_Make_Reservation(self):
-        self.root.destroy()
         window = MakeReservation()
         window.root.mainloop()
 
