@@ -1,4 +1,5 @@
 import customtkinter
+import tkinter as tk
 import sqlite3
 from datetime import datetime, timedelta
 
@@ -75,6 +76,7 @@ class CheckIn:
 
         connection.commit()
         connection.close()
+
 
     def to_home(self):
         self.root.destroy()

@@ -27,6 +27,8 @@ class DB:
             )
         """)
 
+
+        #Reservations
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS reservations (
         name TEXT,
@@ -37,6 +39,20 @@ class DB:
         departure_date TEXT
     )
 ''')
+
+        #Housekeeping
+        cursor.execute('''
+         CREATE TABLE IF NOT EXISTS rooms (
+        room_number INTEGER PRIMARY KEY,
+        condition TEXT CHECK(condition IN ('clean', 'dirty'))
+    )
+''')
+                       
+        # Insert values into the rooms table
+        for room_number in range(1, 201):
+            cursor.execute("INSERT INTO rooms (room_number, condition) VALUES (?, 'clean')", (room_number,))
+            conn.commit()
+
 
         # Insert data into the table
         cursor.execute("""

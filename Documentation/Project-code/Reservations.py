@@ -46,11 +46,6 @@ class Reservations:
 
 
 
-        # Create a button to go back to the home window
-        self.back_button = customtkinter.CTkButton(master=self.root, text="Back", command=self.to_home)
-        self.back_button.pack(pady=12, padx=10)
-
-        self.root.mainloop()
 
          ##button that takes the user back to home window
         self.back_button = customtkinter.CTkButton(master=self.frame, text="Back", command=self.to_home) 

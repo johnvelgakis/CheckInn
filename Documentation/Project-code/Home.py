@@ -9,6 +9,7 @@ from Reservations import Reservations
 from Housekeeping import Housekeeping
 from PrintCheckIns import PrintCheckIns
 from MakeReservation import MakeReservation
+from MyAccount import MyAccount
 
 
 class Home:
@@ -49,8 +50,11 @@ class Home:
         button7 = customtkinter.CTkButton(master=self.frame, text="Make Reservation", command=self.go_to_Make_Reservation)
         button7.pack(pady=12, padx=10)
 
-        button8 = customtkinter.CTkButton(master=self.frame, fg_color=("black", "red") ,text="Logout", command= self.Logout)
+        button8 = customtkinter.CTkButton(master=self.frame, text="My Account", command=self.go_to_my_account)
         button8.pack(pady=12, padx=10)
+
+        button9 = customtkinter.CTkButton(master=self.frame, fg_color=("black", "red") ,text="Logout", command= self.Logout)
+        button9.pack(pady=12, padx=10)
 
     def go_to_check_in(self):
         self.root.destroy()
@@ -80,6 +84,11 @@ class Home:
     def go_to_print_check_ins(self):
         self.root.destroy()
         window = PrintCheckIns()
+        window.root.mainloop()
+
+    def go_to_my_account(self):
+        self.root.destroy()
+        window = MyAccount()
         window.root.mainloop()
 
     def go_to_Make_Reservation(self):
