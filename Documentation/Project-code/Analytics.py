@@ -3,6 +3,8 @@ import customtkinter
 import sqlite3
 from PIL import ImageTk, Image
 
+customtkinter.set_appearance_mode("dark")
+customtkinter.set_default_color_theme("dark-blue")
 
 class Analytics:
     def __init__(self):

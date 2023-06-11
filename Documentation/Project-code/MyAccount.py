@@ -6,7 +6,8 @@ from PIL import ImageTk, Image
 from tkinter import messagebox
 
 #---------------------------------------------------------------------------------------------------------------------        
-
+customtkinter.set_appearance_mode("dark")
+customtkinter.set_default_color_theme("dark-blue")
 
 class MyAccount:
     def __init__(self, email):
@@ -37,15 +38,13 @@ class MyAccount:
         # Create the GUI window
         self.root = tk.Toplevel()
         self.root.title("My Account")
-        self.root.geometry("800x500") 
+        self.root.geometry("1200x900") 
         
 #---------------------------------------------------------------------------------------------------------------------        
-        # Load the background image
-        background_image = ImageTk.PhotoImage(Image.open("/Users/macbook/Desktop/draft_code/CheckInn_Python/back.png"))
-
-        # Create a Label widget with the background image
-        background_label = tk.Label(self.root, image=background_image)
-        background_label.place(x=0, y=0, relwidth=1, relheight=1)
+        # Set up the background image
+        self.background_image = ImageTk.PhotoImage(Image.open("Documentation/Project-code/backround.png"))
+        self.background_label = customtkinter.CTkLabel(self.root, image=self.background_image)
+        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
 #---------------------------------------------------------------------------------------------------------------------                
         # tkinter Widgets
         # Create Label fields
@@ -66,6 +65,9 @@ class MyAccount:
         self.save_button = tk.Button(self.root, text="Save", font=('Arial', 14), command=self.save_changes)
         self.change_password_button = tk.Button(self.root, text="Change Password", command=self.change_password)
 
+        ##button that takes the user back to home window
+        self.back_button = customtkinter.CTkButton(master=self.frame, text="Back", command=self.to_guest_menu) 
+
 #---------------------------------------------------------------------------------------------------------------------        
         # Populate the fields with user data
         self.first_entry.insert(0, self.user_data["First Name"])
@@ -82,11 +84,15 @@ class MyAccount:
         self.email_entry.grid(row=3, column=1)
         self.save_button.grid(row=4, column=1, pady=10)
         self.change_password_button.grid(row=5, column=1)
+        self.back_button.grid(row=6, column=1)
         # Layout - row config [grid]
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_rowconfigure(1, weight=1)
         self.root.grid_rowconfigure(2, weight=1)
         self.root.grid_rowconfigure(3, weight=1)
+        self.root.grid_rowconfigure(4, weight=1)
+        self.root.grid_rowconfigure(5, weight=1)
+        self.root.grid_rowconfigure(6, weight=1)
         # Layout - column config [grid]
         self.root.grid_columnconfigure(0, weight=0)
         self.root.grid_columnconfigure(1, weight=0)
