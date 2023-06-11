@@ -14,7 +14,7 @@ class Requests:
         self.frame = customtkinter.CTkFrame(master=self.root)
         self.frame.pack(pady=0, padx=0, fill="both", expand=True)
 
-        self.name_label = customtkinter.CTkLabel(master=self.frame, text="Ongoing Reservations")
+        self.name_label = customtkinter.CTkLabel(master=self.frame, text="Requests")
         self.name_label.pack(pady=12, padx=10)
 
         
@@ -45,7 +45,7 @@ class Requests:
         # Pack the Treeview
         self.treeview.pack(pady=12, padx=10)
 
-         # Create a button to go back to the home window
+         # Create a button to go complete a request and delete it from database
         self.completerequest_button = customtkinter.CTkButton(master=self.root,fg_color=("black", "green"), text="Done", command=self.complete_request)
         self.completerequest_button.pack(pady=12, padx=10)
 
