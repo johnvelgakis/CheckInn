@@ -4,6 +4,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from datetime import datetime
 from tkcalendar import Calendar
+from PIL import ImageTk, Image
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
@@ -11,15 +12,12 @@ customtkinter.set_default_color_theme("dark-blue")
 class BillingInvoicing:
     def __init__(self):
         self.root = customtkinter.CTk()
-        self.root.geometry("1200x900")
+        self.root.geometry("1500x830")
         self.frame = customtkinter.CTkFrame(master=self.root)
         self.frame.pack(pady=0, padx=0, fill="both", expand=True)
         self.root.title('Billing and Invoicing')
 
-        # Set up the background image
-        self.background_image = ImageTk.PhotoImage(Image.open("Documentation/Project-code/backround.png"))
-        self.background_label = tk.Label(self.root, image=self.background_image)
-        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+        
     
         # Room Type Configuration
         room_type_label = customtkinter.CTkLabel(self.root, text='Room Type:', font=('Arial', 14))
@@ -66,7 +64,7 @@ class BillingInvoicing:
         self.price_label.pack()
         
         ##button that takes the user back to home window
-        self.back_button = customtkinter.CTkButton(master=self.frame, text="Back", command=self.to_guest_menu) 
+        self.back_button = customtkinter.CTkButton(master=self.frame, text="Back", command=self.to_home) 
         self.back_button.pack(pady=12, padx=10) 
 
     def calculate_price(self):
@@ -101,8 +99,8 @@ class BillingInvoicing:
         # Display total charges and VAT
         self.price_label.configure(text=f'Total Price: {total_charges} USD')
         
-    def to_guest_menu(self):
-        self.root.destroy()
-        from GuestMenu import GuestMenu    
-        home_window = GuestMenu()
-        home_window.root.mainloop()
+    def to_home(self):
+     self.root.destroy()
+     from Home import Home  # import here to avoid circular import error
+     home_window = Home()
+     home_window.root.mainloop()

@@ -9,15 +9,12 @@ customtkinter.set_default_color_theme("dark-blue")
 class Analytics:
     def __init__(self):
         self.root = customtkinter.CTk()
-        self.root.geometry("1200x900")
+        self.root.geometry("1300x731")
         self.frame = tk.Frame(master=self.root)
         self.frame.pack(pady=0, padx=0, fill="both", expand=True)
         self.root.title('Analytics')
 
-        # Set up the background image
-        self.background_image = ImageTk.PhotoImage(Image.open("Documentation/Project-code/backround.png"))
-        self.background_label = customtkinter.CTkLabel(self.root, image=self.background_image)
-        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+       
         
         self.frame = tk.Frame(master=self.root)
         self.frame.place(relx=0.5, rely=0.5, anchor="center")
@@ -42,15 +39,15 @@ class Analytics:
         self.button6.pack(pady=12, padx=10)
 
         ##button that takes the user back to home window
-        self.back_button = customtkinter.CTkButton(master=self.frame, text="Back", command=self.to_guest_menu, border_width=0) 
+        self.back_button = customtkinter.CTkButton(master=self.frame, text="Back", command=self.to_home, border_width=0) 
         self.back_button.pack(pady=12, padx=10)
     
      # Placeholder function to go back to the home window
-    def to_guest_menu(self):
+    def to_home(self):
         self.root.destroy()
-        from GuestMenu import GuestMenu    
-        home_window = GuestMenu()
-        home_window.root.mainloop()  
+        from Home import Home  ##import here to avoid circular import error
+        home_window = Home()
+        home_window.root.mainloop()
 
     def occupancy_report(self):
         # Placeholder function for the Occupancy report

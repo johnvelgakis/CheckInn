@@ -30,13 +30,13 @@ class Login:
         self.frame.place(relx=0.5, rely=0.5, anchor="center")
 
         self.entry1 = customtkinter.CTkEntry(master=self.frame, placeholder_text="Username")
-        self.entry1.pack(pady=12, padx=10)
+        self.entry1.pack(pady=4, padx=2)
         self.entry2 = customtkinter.CTkEntry(master=self.frame, placeholder_text="Password", show="*")
-        self.entry2.pack(pady=12, padx=10)
+        self.entry2.pack(pady=4, padx=2)
         self.login_button = customtkinter.CTkButton(master=self.frame, text="Login", command=self.login)
-        self.login_button.pack(pady=12, padx=10)
+        self.login_button.pack(pady=4, padx=2)
         self.signup_button = customtkinter.CTkButton(master=self.frame, text="Sign Up", command=self.signup)
-        self.signup_button.pack(pady=12, padx=10)
+        self.signup_button.pack(pady=4, padx=2)
        
       
         

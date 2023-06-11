@@ -10,6 +10,8 @@ from Housekeeping import Housekeeping
 from PrintCheckIns import PrintCheckIns
 from MakeReservation import MakeReservation
 from MyAccount import MyAccount
+from BillingInvoicing import BillingInvoicing
+from Analytics import Analytics
 
 
 class Home:
@@ -30,31 +32,37 @@ class Home:
 
 
         button1 = customtkinter.CTkButton(master=self.frame, text="Check In", command=self.go_to_check_in, border_width=0)
-        button1.pack(pady=12, padx=10)
+        button1.pack(pady=4, padx=2)
         
         button2 = customtkinter.CTkButton(master=self.frame, text="Check Out", command=self.go_to_check_out, border_width=0)
-        button2.pack(pady=12, padx=10)
+        button2.pack(pady=4, padx=2)
 
         button3 = customtkinter.CTkButton(master=self.frame, text="Housekeeping", command=self.go_to_housekeeping, border_width=0)
-        button3.pack(pady=12, padx=10)
+        button3.pack(pady=4, padx=2)
 
         button4 = customtkinter.CTkButton(master=self.frame, text="Requests", command=self.go_to_requests)
-        button4.pack(pady=12, padx=10)
+        button4.pack(pady=4, padx=2)
 
         button5 = customtkinter.CTkButton(master=self.frame, text="Reservations", command=self.go_to_reservations)
-        button5.pack(pady=12, padx=10)
+        button5.pack(pady=4, padx=2)
 
         button6 = customtkinter.CTkButton(master=self.frame, text="Active Reservations", command=self.go_to_print_check_ins)
-        button6.pack(pady=12, padx=10)
+        button6.pack(pady=4, padx=2)
 
         button7 = customtkinter.CTkButton(master=self.frame, text="Make Reservation", command=self.go_to_Make_Reservation)
-        button7.pack(pady=12, padx=10)
+        button7.pack(pady=4, padx=2)
 
         button8 = customtkinter.CTkButton(master=self.frame, text="My Account", command=self.go_to_my_account)
-        button8.pack(pady=12, padx=10)
+        button8.pack(pady=4, padx=2)
 
-        button9 = customtkinter.CTkButton(master=self.frame, fg_color=("black", "red") ,text="Logout", command= self.Logout)
-        button9.pack(pady=12, padx=10)
+        button9 = customtkinter.CTkButton(master=self.frame, text="Billing & Invoicing", command=self.go_to_BillingInvoicing)
+        button9.pack(pady=4, padx=2)
+
+        button9 = customtkinter.CTkButton(master=self.frame, text="Analytics", command=self.go_to_Analytics)
+        button9.pack(pady=4, padx=2)
+
+        button11 = customtkinter.CTkButton(master=self.frame, fg_color=("black", "red") ,text="Logout", command= self.Logout)
+        button11.pack(pady=4, padx=2)
 
     def go_to_check_in(self):
         self.root.destroy()
@@ -93,6 +101,16 @@ class Home:
 
     def go_to_Make_Reservation(self):
         window = MakeReservation()
+        window.root.mainloop()
+
+    def go_to_BillingInvoicing(self):
+        self.root.destroy()
+        window = BillingInvoicing()
+        window.root.mainloop()
+
+    def go_to_Analytics(self):
+        self.root.destroy()
+        window = Analytics()
         window.root.mainloop()
 
     def Logout(self):

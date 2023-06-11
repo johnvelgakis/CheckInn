@@ -12,7 +12,7 @@ class SignUp:
     def __init__(self): 
         
         self.root = tk.Toplevel()
-        self.root.geometry("1200x900") 
+        self.root.geometry("1300x731") 
         self.root.title("Sign Up") 
         
         # Set up the background image
