@@ -20,32 +20,31 @@ class Home:
         self.frame.place(relx=0.5, rely=0.5, anchor="center")
 
 
-        button1 = customtkinter.CTkButton(master=self.frame, text="Check In", command=self.go_to_check_in, border_width=0)
-        button1.pack(pady=12, padx=10)
+        self.button1 = customtkinter.CTkButton(master=self.frame, text="Occupancy", command=self.occupancy_report, border_width=0)
+        self.button1.pack(pady=12, padx=10)
         
-        button2 = customtkinter.CTkButton(master=self.frame, text="Check Out", command=self.go_to_check_out, border_width=0)
-        button2.pack(pady=12, padx=10)
+        self.button2 = customtkinter.CTkButton(master=self.frame, text="Budget", command=self.budget_report, border_width=0)
+        self.button2.pack(pady=12, padx=10)
 
-        button3 = customtkinter.CTkButton(master=self.frame, text="Housekeeping", command=self.go_to_housekeeping, border_width=0)
-        button3.pack(pady=12, padx=10)
+        self.button3 = customtkinter.CTkButton(master=self.frame, text="Functional Budget", command=self.fun_budget_report, border_width=0)
+        self.button3.pack(pady=12, padx=10)
 
-        button4 = customtkinter.CTkButton(master=self.frame, text="Requests", command=self.go_to_requests)
-        button4.pack(pady=12, padx=10)
+        self.button4 = customtkinter.CTkButton(master=self.frame, text="Guest Preferences", command=self.guest_pref_report, border_width=0)
+        self.button4.pack(pady=12, padx=10)
 
-        button5 = customtkinter.CTkButton(master=self.frame, text="Reservations", command=self.go_to_reservations)
-        button5.pack(pady=12, padx=10)
+        self.button5 = customtkinter.CTkButton(master=self.frame, text="Top Bookers", command=self.top_bookers_report, border_width=0)
+        self.button5.pack(pady=12, padx=10)
 
-        button6 = customtkinter.CTkButton(master=self.frame, text="Active Reservations", command=self.go_to_print_check_ins)
-        button6.pack(pady=12, padx=10)
+        self.button6 = customtkinter.CTkButton(master=self.frame, text="Action Log", command=self.action_log_report, border_width=0)
+        self.button6.pack(pady=12, padx=10)
 
-        button7 = customtkinter.CTkButton(master=self.frame, text="Make Reservation", command=self.go_to_Make_Reservation)
-        button7.pack(pady=12, padx=10)
+        ##button that takes the user back to home window
+        self.back_button = customtkinter.CTkButton(master=self.frame, text="Back", command=self.to_guest_menu, border_width=0) 
+        self.back_button.pack(pady=12, padx=10)
 
-        button8 = customtkinter.CTkButton(master=self.frame, text="My Account", command=self.go_to_my_account)
-        button8.pack(pady=12, padx=10)
-
-        button9 = customtkinter.CTkButton(master=self.frame, fg_color=("black", "red") ,text="Logout", command= self.Logout)
-        button9.pack(pady=12, padx=10)
-
-       
+    def to_guest_menu(self):
+        self.root.destroy()
+        from GuestMenu import GuestMenu    
+        home_window = GuestMenu()
+        home_window.root.mainloop()   
 
