@@ -15,6 +15,11 @@ class BillingInvoicing:
         self.frame = customtkinter.CTkFrame(master=self.root)
         self.frame.pack(pady=0, padx=0, fill="both", expand=True)
         self.root.title('Billing and Invoicing')
+
+        # Set up the background image
+        self.background_image = ImageTk.PhotoImage(Image.open("Documentation/Project-code/backround.png"))
+        self.background_label = tk.Label(self.root, image=self.background_image)
+        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
     
         # Room Type Configuration
         room_type_label = customtkinter.CTkLabel(self.root, text='Room Type:', font=('Arial', 14))
